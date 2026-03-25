@@ -102,10 +102,6 @@ function loadChecked() {
   return prefill;
 }
 
-function persist(checked) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(checked)); } catch {}
-}
-
 function formatRelativeDate(offsetDays = 0) {
   const d = new Date();
   d.setDate(d.getDate() + offsetDays);
@@ -271,7 +267,7 @@ function ReelModal({ student, rowIdx, activeVideo, onChangeVideo, onClose }) {
 
 // ─── App ──────────────────────────────────────────────────
 export default function App() {
-  const [checked, setChecked] = useState(loadChecked);
+  const [checked] = useState(loadChecked);
   const [reel, setReel]       = useState(null);
 
   const handleCellClick = (student, rowIdx, key, dayIdx) => {
